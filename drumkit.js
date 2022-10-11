@@ -33,7 +33,8 @@ async function playSound(e) {
     key = document.querySelector(`.key[data-key="${e.target.dataset.key}"]`)
   } else {
     // audio = document.querySelector(`audio[data-key="${e.code}"]`)
-    audio = await soundsCache.match('/sounds/clap.wav')
+    const sound = await caches.open('soundsCache')
+    audio = await sound.match('/sounds/clap.wav')
     key = document.querySelector(`.key[data-key="${e.code}"]`)
   }
   console.log(e)
