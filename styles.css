@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    min-height: 100vh;
+    padding: 0 1rem;
+    background-image: url(images/rock1.png), linear-gradient(90deg, red, blue);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+
+.keys {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.key {
+    width: 75px;
+    height: 75px;
+    border: 2px #252525 solid;
+    font-size: 2rem;
+    text-align: center;
+    color: #252525;
+    padding-top: 1.5rem;
+    border-radius: 10px;
+    transition: all .07s;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 10px #ffc600
+}
+
+.sound {
+    color: #ffc600;
+}
+
+.key:hover,
+.key:focus {
+    border: 5px transparent solid;
+    border-image: linear-gradient(220deg, red, blue) 1;
+
+}
+
+@media screen and (min-width: 1028px) {
+
+    .container {
+        flex-direction: row;
+    }
+
+    .key {
+        width: 100px;
+        height: 100px;
+    }
+}
