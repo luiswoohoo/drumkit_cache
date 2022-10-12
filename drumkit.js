@@ -41,22 +41,21 @@ async function playSound(e) {
 
     console.log(`audio: ${audio}`)
 
-    audioRes = await audio.json()
-    console.log(`audio res: ${audioRes}`)
+    // audioRes = await audio.json()
+    // console.log(`audio res: ${audioRes}`)
 
-    console.log(`audio url: ${audio}`)
+    // console.log(`audio url: ${audio}`)
     key = document.querySelector(`.key[data-key="${e.code}"]`)
   }
   console.log(`event: ${e}`)
-
+  newAudio.play()
   // const audio = document.querySelector(`audio[data-key="${e.code}"]`)
   // const key = document.querySelector(`.key[data-key="${e.code}"]`)
 
-  if (!audio) return //stop function from running
-  audio.currentTime = 0 //start at beginning of audio file
-  // audio.url.play()
-  newAudio.play()
-  key.classList.add('playing')
+  // if (!audio) return //stop function from running
+  // audio.currentTime = 0 //start at beginning of audio file
+  // // audio.url.play()
+  // key.classList.add('playing')
 }
 
 function removeTransition(e) {
