@@ -34,7 +34,7 @@ async function playSound(e) {
   } else {
     // audio = document.querySelector(`audio[data-key="${e.code}"]`)
     const sound = await caches.open('soundsCache')
-    console.log(`sounds cache: ${sound}`)
+    console.log(`sounds cache: ${sound.keys()}`)
     audio = await sound.match('/sounds/clap.wav') // returns a response object (it's like doing a fetch call)
     
     
