@@ -35,7 +35,7 @@ async function playSound(e) {
     // audio = document.querySelector(`audio[data-key="${e.code}"]`)
     const sound = await caches.open('soundsCache')
     audio = await sound.match('/sounds/clap.wav')
-    console.log(audio)
+    console.log(audio.url)
     key = document.querySelector(`.key[data-key="${e.code}"]`)
   }
   console.log(e)
