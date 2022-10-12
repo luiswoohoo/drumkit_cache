@@ -36,10 +36,11 @@ async function playSound(e) {
     const sound = await caches.open('soundsCache')
     console.log(`sounds cache: ${sound}`)
     audio = await sound.match('/sounds/clap.wav') // returns a response object (it's like doing a fetch call)
-
+    
     
 
-    console.log(`audio: ${audio}`)
+    console.log(`audio arraybuffer: ${audio.arrayBuffer()}`)
+    console.log(`audio blob: ${audio.blob()}`)
 
     // audioRes = await audio.json()
     // console.log(`audio res: ${audioRes}`)
