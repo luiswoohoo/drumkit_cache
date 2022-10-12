@@ -1,16 +1,20 @@
 async function cacheSounds() {
   const soundsCache = await caches.open('soundsCache')
   const soundUrls = [
-    'sounds/boom.wav',
-    'sounds/clap.wav',
-    'sounds/hihat.wav',
-    'sounds/kick.wav',
-    'sounds/openhat.wav',
-    'sounds/ride.wav',
-    'sounds/snare.wav',
-    'sounds/tink.wav',
-    'sounds/tom.wav',
+    '/sounds/boom.wav',
+    '/sounds/clap.wav',
+    '/sounds/hihat.wav',
+    '/sounds/kick.wav',
+    '/sounds/openhat.wav',
+    '/sounds/ride.wav',
+    '/sounds/snare.wav',
+    '/sounds/tink.wav',
+    '/sounds/tom.wav',
   ]
+
+  const imgCache = await caches.open('imgCache')
+  const imgUrl = '/images/rock1.png'
+  imgCache.add(imgUrl)
 
   soundsCache.addAll(soundUrls)
 }
@@ -34,8 +38,15 @@ async function playSound(e) {
   } else {
     // audio = document.querySelector(`audio[data-key="${e.code}"]`)
     const sound = await caches.open('soundsCache')
-    audio = await sound.match('/sounds/clap.wav')
-    console.log(`audio url: ${audio.url}`)
+    console.log(`sounds cache: ${sound}`)
+    audio = await sound.match('/sounds/clap.wav') // returns a response object (it's like doing a fetch call)
+
+    console.log(`audio: ${audio}`)
+
+    audioRes = await audio.json()
+    console.log(`audio res: ${audioRes}`)
+
+    console.log(`audio url: ${audio}`)
     key = document.querySelector(`.key[data-key="${e.code}"]`)
   }
   console.log(`event: ${e}`)
@@ -45,7 +56,7 @@ async function playSound(e) {
 
   if (!audio) return //stop function from running
   audio.currentTime = 0 //start at beginning of audio file
-  audio.url.play()
+  // audio.url.play()
   key.classList.add('playing')
 }
 
