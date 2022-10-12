@@ -12,10 +12,6 @@ async function cacheSounds() {
     '/sounds/tom.wav',
   ]
 
-  const imgCache = await caches.open('imgCache')
-  const imgUrl = '/images/rock1.png'
-  imgCache.add(imgUrl)
-
   soundsCache.addAll(soundUrls)
 }
 
@@ -41,6 +37,8 @@ async function playSound(e) {
     console.log(`sounds cache: ${sound}`)
     audio = await sound.match('/sounds/clap.wav') // returns a response object (it's like doing a fetch call)
 
+    const newAudio = new Audio(audio)
+
     console.log(`audio: ${audio}`)
 
     audioRes = await audio.json()
@@ -57,6 +55,7 @@ async function playSound(e) {
   if (!audio) return //stop function from running
   audio.currentTime = 0 //start at beginning of audio file
   // audio.url.play()
+  newAudio.play()
   key.classList.add('playing')
 }
 
