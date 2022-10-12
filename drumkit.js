@@ -45,7 +45,7 @@ async function playSound(e) {
 
   if (!audio) return //stop function from running
   audio.currentTime = 0 //start at beginning of audio file
-  audio.play()
+  audio.url.play()
   key.classList.add('playing')
 }
 
